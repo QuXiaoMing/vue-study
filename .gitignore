@@ -1,8 +1,6 @@
 .DS_Store
 node_modules
 *.log
-dist/*.gz
-dist/*.map
+dist
 coverage
-dist/*.js
 .vscode

@@ -10,13 +10,26 @@ export function initState(vm) {
     console.log('TCL: initState -> vm', vm);
     initData(vm);
 }
-
+export function proxy(vm, data) {
+    Object.keys(data).forEach(key => {
+        Object.defineProperty(vm, key, {
+            configurable: false,
+            enumerable: false,
+            get: function() {
+                return vm.$data[key];
+            },
+            set: function(value) {
+                return (vm.$data[key] = value);
+            },
+        });
+    });
+}
 export function initData(vm) {
     let data = vm.$options.data;
     data = vm.$data = typeof data === 'function' ? data() : data;
     console.error('TCL: initData -> vm.$data', vm.$data);
     observe(data);
-
+    proxy(vm, data);
     initComputed(vm);
 }
 

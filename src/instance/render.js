@@ -9,7 +9,6 @@ export function renderMixin(Vue) {
     Vue.prototype._render = function() {
         let vm = this;
         let el = vm.$el;
-        // TODO 解析模版字符串
         el.innerHTML = parseTemplate(vm, vm.$options.template);
     };
 }

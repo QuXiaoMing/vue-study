@@ -10,7 +10,7 @@ export function renderMixin(Vue) {
         let vm = this;
         let el = vm.$el;
         // TODO 解析模版字符串
-        el.innerHTML = parseTemplate(vm.$data, vm.$options.template);
+        el.innerHTML = parseTemplate(vm, vm.$options.template);
     };
 }
 

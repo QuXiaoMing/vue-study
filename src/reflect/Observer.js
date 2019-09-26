@@ -59,3 +59,25 @@ export function defineReactive(obj, key, val) {
         },
     });
 }
+
+export function defineComputed(vm, key, getter, setter) {
+    console.log('TCL: defineComputed -> getter', getter);
+    const dep = new Dep();
+    Object.defineProperty(vm, key, {
+        get: function() {
+            console.warn('TCL: defineComputed -> get', key);
+            Dep.target = vm._computedWatchers[key];
+            return getter.call(vm);
+        },
+        set: function(newVal) {
+            let value = getter.call(vm);
+            if (!newVal || value !== newVal) {
+                return;
+            }
+            if (typeof setter === 'function') {
+                setter(newVal, value);
+            }
+            dep.notify();
+        },
+    });
+}

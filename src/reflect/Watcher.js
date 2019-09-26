@@ -4,6 +4,7 @@ export default class Watcher {
     constructor(vm, expOrFn, cb, options, isRenderWatcher) {
         console.warn('TCL: Watcher -> constructor -> vm');
         Dep.target = this;
+        this.vm = vm;
         if (typeof expOrFn === 'function') {
             this.getter = expOrFn;
         } else {
@@ -13,6 +14,7 @@ export default class Watcher {
     }
 
     get() {
+        console.log('TCL: Watcher -> get -> get');
         const vm = this.vm;
         return this.getter.call(vm, vm);
     }

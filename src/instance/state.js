@@ -3,4 +3,5 @@ export function stateMixin(Vue) {
 }
 export function initState(vm) {
     console.log('TCL: initState -> vm', vm);
+    vm.$data = vm.$options.data();
 }

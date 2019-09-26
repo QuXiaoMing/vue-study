@@ -1,8 +1,7 @@
 import {mountComponent} from './lifecycle';
-import {query} from '../utils/index';
+import {query, parseTemplate} from '../utils/index';
 
 export function renderMixin(Vue) {
-    console.log('TCL: renderMixin');
     Vue.prototype.$mount = function(el) {
         return mountComponent(this, el && query(el, this.$document));
     };
@@ -11,7 +10,7 @@ export function renderMixin(Vue) {
         let vm = this;
         let el = vm.$el;
         // TODO 解析模版字符串
-        el.innerHTML = vm.$options.template;
+        el.innerHTML = parseTemplate(vm.$data, vm.$options.template);
     };
 }
 

@@ -1,3 +1,5 @@
+export {isObject, set} from 'lodash';
+
 export const query = el => document.querySelector(el);
 export const noop = () => {};
 export const parseTemplate = (data, template) => {

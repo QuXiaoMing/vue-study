@@ -1,3 +1,3 @@
 export function eventsMixin(vm) {
-    console.log('TCL: eventsMixin -> vm', vm);
+    console.log('TCL: eventsMixin -> vm');
 }

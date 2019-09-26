@@ -5,7 +5,7 @@ import {initRender} from './render';
 let uid = 0;
 
 export function initMixin(Vue) {
-    console.log('TCL: initMixin -> Vue', Vue);
+    console.log('TCL: initMixin -> Vue');
     Vue.prototype._init = function(options) {
         let vm = this;
         vm._uid = uid++;

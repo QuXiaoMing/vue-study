@@ -7,6 +7,7 @@ export function renderMixin(Vue) {
     };
 
     Vue.prototype._render = function() {
+        console.warn('TCL: Vue.prototype._render -> _render');
         let vm = this;
         let el = vm.$el;
         el.innerHTML = parseTemplate(vm, vm.$options.template);

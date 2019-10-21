@@ -15,6 +15,7 @@
                 template: `
                     <div>a:{{a}}</div>
                     <div>b:{{b}}</div>
+                    <div>test2:{{test2}}</div>
                     <div>test:{{test}}</div>
                 `,
                 data() {
@@ -24,6 +25,10 @@
                     };
                 },
                 computed: {
+                    test2() {
+                        return this.test * 2;
+                    },
+
                     test() {
                         return this.a + this.b;
                     },
